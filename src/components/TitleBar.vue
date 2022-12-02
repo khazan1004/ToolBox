@@ -24,35 +24,35 @@ let shortcutkeyOpenDevTools = (e: KeyboardEvent) => {
 const openDevTools = () => {
   ipcRenderer.send("open-dev-tools");
 };
-const minimize = () => {
-  ipcRenderer.send("window-minimize");
-};
-const maximize = () => {
-  ipcRenderer.send("window-maximize");
-};
-const close = () => {
-  ipcRenderer.send("window-close");
+
+const winFrame = {
+  minimize() {
+    ipcRenderer.send("window-minimize");
+  },
+  maximize() {
+    ipcRenderer.send("window-maximize");
+  },
+  close() {
+    ipcRenderer.send("window-close");
+  },
 };
 </script>
 <template>
-  <el-header style="-webkit-app-region: drag">
-    <el-menu
-      :default-active="activeIndex"
-      mode="horizontal"
-      :ellipsis="false"
-      @select="handleSelect"
-      style="-webkit-app-region: no-drag"
-    >
-      <el-avatar> 汤 </el-avatar>
-      <el-menu-item>
-        <el-sub-menu>
-          <template #title>帮助</template>
-          <el-menu-item @click="openDevTools">开发者工具 (F12)</el-menu-item>
-          <el-menu-item @click="close">退出程序</el-menu-item>
-        </el-sub-menu>
-      </el-menu-item>
-    </el-menu>
-  </el-header>
+  <el-menu
+    :default-active="activeIndex"
+    mode="horizontal"
+    :ellipsis="false"
+    @select="handleSelect"
+    style="-webkit-app-region: no-drag"
+  >
+    <el-menu-item>
+      <el-sub-menu>
+        <template #title>帮助</template>
+        <el-menu-item @click="openDevTools">开发者工具 (F12)</el-menu-item>
+        <el-menu-item @click="winFrame.close">退出程序</el-menu-item>
+      </el-sub-menu>
+    </el-menu-item>
+  </el-menu>
 </template>
-<style scoped lang="scss">
+<style lang="scss" scoped>
 </style>

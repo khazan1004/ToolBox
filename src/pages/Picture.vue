@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {} from "vue";
 </script>
 <template>
   <el-row>
@@ -11,5 +10,4 @@ import {} from "vue";
   </el-row>
 </template>
 <style lang="scss" scoped>
-
 </style>

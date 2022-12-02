@@ -1,29 +1,23 @@
-<script setup lang="ts">
+<script setup lang="ts" >
 import TitleBar from "./components/TitleBar.vue";
-import TcpDebug from "./components/TcpDebug.vue";
+import NavLeft from "./components/NavLeft.vue";
 </script>
 <template>
-  <el-container>
-    <TitleBar></TitleBar>
+  <div class="common-layout">
     <el-container>
-      <el-aside>
-        <el-scrollbar>
-          <el-menu>
-            <el-menu-item> TCP调试 </el-menu-item>
-            <el-menu-item> 正则匹配 </el-menu-item>
-            <el-menu-item> 文本差异比对 </el-menu-item>
-            <el-sub-menu>
-              <template #title>进制转换</template>
-              <el-menu-item> 十六进制转十进制 </el-menu-item>
-            </el-sub-menu>
-          </el-menu>
-        </el-scrollbar>
-      </el-aside>
-      <el-main>
-        <TcpDebug></TcpDebug>
-      </el-main>
+      <el-header style="-webkit-app-region: drag">
+        <TitleBar></TitleBar>
+      </el-header>
+      <el-container>
+        <el-aside width="200px">
+          <NavLeft></NavLeft>
+        </el-aside>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
+      </el-container>
     </el-container>
-  </el-container>
+  </div>
 </template>
 <style lang="scss">
 #app {

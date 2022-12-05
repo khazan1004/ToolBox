@@ -1,26 +1,5 @@
-<template>
-  <el-scrollbar>
-    <el-menu>
-      <el-menu-item v-for="(item, i) in asideMenu" :key="i" :index="i">
-        <router-link :to="{ name: item.name }" v-text="item.title" />
-      </el-menu-item>
-      <!-- <el-sub-menu v-for="(item, i) in asideMenu" :key="i">
-                <template #title v-text="item.title"></template>
-                <el-menu-item
-                  v-for="(childrenItem, j) in item.children"
-                  :key="j"
-                >
-                  <router-link
-                    :to="{ name: childrenItem.name }"
-                    v-text="childrenItem.title"
-                  />
-                </el-menu-item>
-              </el-sub-menu> -->
-    </el-menu>
-  </el-scrollbar>
-</template>
-<script setup lang="ts">
 
+<script setup lang="ts">
 class MenuItem {
   title: string;
   name: string;
@@ -60,5 +39,26 @@ const asideMenu: MenuItem[] = [
   },
 ];
 </script>
+<template>
+  <el-scrollbar>
+    <el-menu>
+      <el-menu-item v-for="(item, i) in asideMenu" :key="i" :index="i">
+        <router-link :to="{ name: item.name }" v-text="item.title" />
+      </el-menu-item>
+      <!-- <el-sub-menu v-for="(item, i) in asideMenu" :key="i">
+                <template #title v-text="item.title"></template>
+                <el-menu-item
+                  v-for="(childrenItem, j) in item.children"
+                  :key="j"
+                >
+                  <router-link
+                    :to="{ name: childrenItem.name }"
+                    v-text="childrenItem.title"
+                  />
+                </el-menu-item>
+              </el-sub-menu> -->
+    </el-menu>
+  </el-scrollbar>
+</template>
 <style lang="scss" scoped>
 </style>

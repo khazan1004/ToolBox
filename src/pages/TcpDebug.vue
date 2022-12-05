@@ -22,7 +22,44 @@ class HistoryItem {
   }
 }
 // 通信历史
-const history: HistoryItem[] = [];
+const history: HistoryItem[] = [
+  {
+    sendTime: new Date(),
+    receiveTime: new Date(),
+    sendMessage: "123",
+    receiveMessage: "1321",
+  },
+  {
+    sendTime: new Date(),
+    receiveTime: new Date(),
+    sendMessage: "123",
+    receiveMessage: "1321",
+  },
+  {
+    sendTime: new Date(),
+    receiveTime: new Date(),
+    sendMessage: "123",
+    receiveMessage: "1321",
+  },
+  {
+    sendTime: new Date(),
+    receiveTime: new Date(),
+    sendMessage: "123",
+    receiveMessage: "1321",
+  },
+  {
+    sendTime: new Date(),
+    receiveTime: new Date(),
+    sendMessage: "123",
+    receiveMessage: "1321",
+  },
+  {
+    sendTime: new Date(),
+    receiveTime: new Date(),
+    sendMessage: "123",
+    receiveMessage: "1321",
+  },
+];
 // 通信历史 - 保留的最大条数
 const historyLimit: number = 500;
 // 要发送的内容
@@ -72,43 +109,79 @@ const closeConnect = () => {
 };
 </script>
 <template>
-  <el-container>
-    <el-main id="history-main" ref="1">
-      <div v-for="(item, index) in history" :key="index">
-        <p>
-          <span v-text="item.receiveTime"></span>
-          <span v-text="item.sendMessage"></span>
-        </p>
-        <p>
-          <span v-text="item.receiveTime"></span>
-          <span v-text="item.receiveMessage"></span>
-        </p>
-      </div>
+  <el-container style="height: 100%">
+    <el-main style="height: 100%">
+      <el-scrollbar>
+        <div v-for="(item, index) in history" :key="index">
+          <p>
+            <!-- <span v-text="item.sendTime"></span> -->
+            <span v-text="'>>: ' + item.sendMessage"></span>
+          </p>
+          <p>
+            <!-- <span v-text="item.receiveTime"></span> -->
+            <span v-text="'<<: ' + item.receiveMessage"></span>
+          </p>
+        </div>
+      </el-scrollbar>
     </el-main>
-    <el-footer>
-      <el-input
-        type="textarea"
-        :rows="2"
-        v-model="content"
-        placeholder="请输入要发送的指令"
-        :maxlength="-1"
-        :show-word-limit="false"
-        :autosize="{ minRows: 2, maxRows: 4 }"
-      />
-      <el-tooltip
-        :disabled="isConnection"
-        effect="dark"
-        content="请先连接服务器"
-        placement="top"
-      >
-        <el-button type="primary" size="default" @click="sendMessage">
-          发送
-        </el-button>
-      </el-tooltip>
+    <el-footer style="height: auto">
+      <el-row :gutter="20">
+        <el-col :sm="4" :md="10" :lg="10" :xl="1">
+          <el-input v-model="host" label="Host" />
+        </el-col>
+        <el-col :sm="8" :md="10" :lg="10" :xl="1">
+          <el-input-number
+            v-model="port"
+            label="Port"
+            :min="0"
+            :max="65535"
+            :step="1"
+            :controls="false"
+          />
+        </el-col>
+        <el-col :sm="3" :md="13" :lg="3" :xl="1">
+          <el-button
+            type="primary"
+            size="default"
+            @click="sendMessage"
+            v-text="isConnection ? '断开' : '连接'"
+          />
+        </el-col>
+      </el-row>
+      <el-row :gutter="20">
+        <el-col :sm="20" :md="10" :lg="10" :xl="1">
+          <el-input
+            type="textarea"
+            :rows="2"
+            v-model="content"
+            placeholder="请输入要发送的指令"
+            :show-word-limit="false"
+            :autosize="{ minRows: 2, maxRows: 4 }"
+          />
+        </el-col>
+        <el-col :sm="4" :md="10" :lg="10" :xl="1">
+          <el-row>
+            <el-checkbox label="HEX" name="isHex" />
+          </el-row>
+          <el-row>
+            <el-tooltip
+              :disabled="isConnection"
+              effect="dark"
+              content="请先连接服务器"
+              placement="top"
+            >
+              <el-button type="primary" size="default" @click="sendMessage">
+                发送
+              </el-button>
+            </el-tooltip>
+          </el-row>
+        </el-col>
+      </el-row>
     </el-footer>
   </el-container>
 </template>
  <style lang="scss" scoped>
-#history-main {
+.el-main {
+  padding: 0;
 }
 </style>

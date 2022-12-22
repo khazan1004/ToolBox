@@ -43,7 +43,6 @@ const winFrame = {
     mode="horizontal"
     :ellipsis="false"
     @select="handleSelect"
-    style="-webkit-app-region: no-drag"
   >
     <el-menu-item>
       <el-sub-menu>
@@ -55,4 +54,9 @@ const winFrame = {
   </el-menu>
 </template>
 <style lang="scss" scoped>
+.el-menu-item {
+  .el-sub-menu {
+    -webkit-app-region: no-drag;
+  }
+}
 </style>

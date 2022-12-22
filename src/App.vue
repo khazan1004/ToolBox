@@ -9,9 +9,7 @@ import NavLeft from "./components/NavLeft.vue";
     </el-header>
     <el-container>
       <el-aside width="200px">
-        <el-scrollbar>
-          <NavLeft></NavLeft>
-        </el-scrollbar>
+        <NavLeft></NavLeft>
       </el-aside>
       <el-main>
         <router-view></router-view>
@@ -20,6 +18,9 @@ import NavLeft from "./components/NavLeft.vue";
   </el-container>
 </template>
 <style lang="scss">
+:root {
+  --el-header-height: 60px;
+}
 body {
   margin: 0;
 }
@@ -30,5 +31,14 @@ body {
   text-align: center;
   color: #2c3e50;
   overflow: hidden;
+}
+.el-header {
+  height: var(--el-header-height);
+}
+.el-aside {
+  height: calc(100vh - var(--el-header-height));
+}
+.el-main {
+  height: calc(100vh - var(--el-header-height));
 }
 </style>

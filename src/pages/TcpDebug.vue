@@ -209,7 +209,7 @@ onUnmounted(() => {
 
     #history-table {
       tr:nth-child(even) {
-        background: rgba(0, 0, 0, 0.7);
+        background: rgba(0,0,0,0.7);
       }
       td {
         text-align: left;

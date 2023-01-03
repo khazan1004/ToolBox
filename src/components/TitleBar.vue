@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import { ipcRenderer } from "electron";
+import DeepRouter from "./DeepRouter.vue";
 
 const activeIndex = ref("1");
 
@@ -36,6 +37,30 @@ const winFrame = {
     ipcRenderer.send("window-close");
   },
 };
+
+const titleBarMenu: any[] = [
+  {
+    title: "设置",
+    children: [
+      {
+        title: "快捷键",
+      },
+    ],
+  },
+  {
+    title: "帮助",
+    children: [
+      {
+        title: "开发者工具 (F12)",
+        // click: openDevTools,
+      },
+      {
+        title: "退出程序",
+        // click: winFrame.close,
+      },
+    ],
+  },
+];
 </script>
 <template>
   <el-menu
@@ -44,13 +69,14 @@ const winFrame = {
     :ellipsis="false"
     @select="handleSelect"
   >
-    <el-menu-item>
-      <el-sub-menu>
-        <template #title>帮助</template>
-        <el-menu-item @click="openDevTools">开发者工具 (F12)</el-menu-item>
-        <el-menu-item @click="winFrame.close">退出程序</el-menu-item>
-      </el-sub-menu>
-    </el-menu-item>
+    <el-menu-item index="logo">LOGO</el-menu-item>
+    <div class="flex-grow"></div>
+    <DeepRouter
+      v-for="(item, i) in titleBarMenu"
+      :key="i"
+      :index="'t' + String(i)"
+      :menu="item"
+    ></DeepRouter>
   </el-menu>
 </template>
 <style lang="scss" scoped>
@@ -58,5 +84,8 @@ const winFrame = {
   .el-sub-menu {
     -webkit-app-region: no-drag;
   }
+}
+.flex-grow {
+  flex-grow: 1;
 }
 </style>

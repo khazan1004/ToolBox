@@ -12,14 +12,24 @@ const routes = [
         component: () => import('../pages/404.vue')
     },
     {
-        path: '/tcp-debug',
-        name: 'TcpDebug',
-        component: () => import('../pages/TcpDebug.vue')
+        path: '/socket-debug',
+        name: 'SocketDebug',
+        component: () => import('../pages/SocketDebug.vue')
+    },
+    {
+        path: '/web-socket-debug',
+        name: 'WebSocketDebug',
+        component: () => import('../pages/WebSocketDebug.vue')
     },
     {
         path: '/picture',
         name: 'Picture',
         component: () => import('../pages/Picture.vue')
+    },
+    {
+        path: '/hex-convert',
+        name: 'HexConvert',
+        component: () => import('../pages/HexConvert.vue')
     }
 ]
 export default createRouter({

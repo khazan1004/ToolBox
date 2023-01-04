@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import { ipcRenderer } from "electron";
-import DeepRouter from "./DeepRouter.vue";
+import MenuIter from "./MenuIter.vue";
 
 const activeIndex = ref("1");
 
@@ -71,19 +71,17 @@ const titleBarMenu: any[] = [
   >
     <el-menu-item index="logo">LOGO</el-menu-item>
     <div class="flex-grow"></div>
-    <DeepRouter
+    <MenuIter
       v-for="(item, i) in titleBarMenu"
       :key="i"
       :index="'t' + String(i)"
       :menu="item"
-    ></DeepRouter>
+    ></MenuIter>
   </el-menu>
 </template>
 <style lang="scss" scoped>
-.el-menu-item {
-  .el-sub-menu {
-    -webkit-app-region: no-drag;
-  }
+.el-sub-menu {
+  -webkit-app-region: no-drag;
 }
 .flex-grow {
   flex-grow: 1;

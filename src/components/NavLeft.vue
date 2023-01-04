@@ -2,12 +2,12 @@
 <script setup lang="ts">
 import { h, ref, nextTick, onMounted, onUnmounted, Ref } from "vue";
 import { useRouter } from "vue-router";
-import DeepRouter from "./DeepRouter.vue";
+import MenuIter from "./MenuIter.vue";
 
 const asideMenu: any[] = [
   {
     title: "Socket调试",
-    name: "TcpDebug",
+    name: "SocketDebug",
   },
   {
     title: "WebSocket调试",
@@ -26,8 +26,7 @@ const asideMenu: any[] = [
   },
   {
     title: "进制转换",
-    name: "404",
-    isHade: true,
+    name: "HexConvert",
   },
   {
     title: "其他",
@@ -39,22 +38,16 @@ const asideMenu: any[] = [
     ],
   },
 ];
-for (let index = 0; index < 20; index++) {
-  asideMenu.push({
-    title: "菜单" + index,
-    name: "404",
-  });
-}
 </script>
 <template>
   <el-scrollbar>
     <el-menu>
-      <DeepRouter
+      <MenuIter
         v-for="(item, i) in asideMenu"
         :key="i"
         :index="String(i)"
         :menu="item"
-      ></DeepRouter>
+      ></MenuIter>
     </el-menu>
   </el-scrollbar>
 </template>

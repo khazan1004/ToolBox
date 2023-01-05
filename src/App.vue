@@ -18,27 +18,39 @@ import NavLeft from "./components/NavLeft.vue";
   </el-container>
 </template>
 <style lang="scss">
-:root {
-  --el-header-height: 60px;
-}
 body {
   margin: 0;
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: $--font-family;
+  color: $--font-color;
   text-align: center;
-  color: #2c3e50;
   overflow: hidden;
 }
 .el-header {
-  height: var(--el-header-height);
+  height: $--el-header-height;
 }
 .el-aside {
-  height: calc(100vh - var(--el-header-height));
+  height: calc(100vh - $--el-header-height);
 }
 .el-main {
-  height: calc(100vh - var(--el-header-height));
+  height: calc(100vh - $--el-header-height);
+
+  // 滚动条样式优化
+  &::-webkit-scrollbar {
+    // ​滚动条整体部分
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    // ​外层轨道
+    box-shadow: inset 0 0 5px $--scrollbar-color-light;
+    border-radius: 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    // 内嵌滑块
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px $--scrollbar-color-light;
+    opacity: 0.2;
+  }
 }
 </style>

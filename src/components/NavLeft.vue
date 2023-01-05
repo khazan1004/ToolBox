@@ -6,6 +6,10 @@ import MenuIter from "./MenuIter.vue";
 
 const asideMenu: any[] = [
   {
+    title: "首页",
+    name: "Home",
+  },
+  {
     title: "Socket调试",
     name: "SocketDebug",
   },

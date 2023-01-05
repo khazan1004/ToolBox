@@ -69,7 +69,8 @@ const titleBarMenu: any[] = [
     :ellipsis="false"
     @select="handleSelect"
   >
-    <el-menu-item index="logo">LOGO</el-menu-item>
+    <el-menu-item id="logo" index="logo">LOGO</el-menu-item>
+
     <div class="flex-grow"></div>
     <MenuIter
       v-for="(item, i) in titleBarMenu"

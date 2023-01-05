@@ -1,1 +1,23 @@
-$bg-color: #1989fa;
+/* 主题颜色 */
+$--color-primary: #1890ff;
+$--color-success: #13ce66;
+$--color-warning: #ffba00;
+$--color-danger: #ff4949;
+
+$--button-font-weight: 400;
+
+$--border-color-light: #dfe4ed;
+$--border-color-lighter: #e6ebf5;
+
+$--table-border: 1px solid #dfe6ec;
+
+$--el-menu-bg-color: #ff4949;
+$--el-header-height: 60px;
+
+/* 全局字体 */
+$--font-color: rgba(26, 144, 255);
+$--font-family: "Avenir, Helvetica, Arial, sans-serif";
+
+/* 全局滚轮样式 */
+$--scrollbar-width: 6px;
+$--scrollbar-color-light: rgba(26, 144, 255, 0.2);
